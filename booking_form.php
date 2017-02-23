@@ -73,6 +73,8 @@
 
 </form>
 
+{{booking}}
+
 </div>
 
 <script>
@@ -96,6 +98,7 @@ app.controller("createbooking", function ($scope, $http) {
 				facilities.push(fac);
 			}
 		}
+		$scope.booking.facilities = [];
 		$scope.facilities = facilities;
 	};
 	
