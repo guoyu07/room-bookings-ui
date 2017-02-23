@@ -14,7 +14,8 @@
 
 
 
-<div ng-cloak class="container-fluid" ng-app="bookings" ng-controller="bookingsctl">
+<div ng-cloak class="container-fluid" ng-app="bookings">
+<div ng-controller="bookingsctl">
 
 {{failure}}
 
@@ -47,7 +48,7 @@ $password = get_option('password');
 ?>
 
 <script>
-var app = angular.module("bookings", ['datatables']);
+var app = angular.module("bookings", ['datatables', 'moment-picker']);
 app.controller("bookingsctl", function($scope, $http) {
 
 	$scope.dtOptions = {};
@@ -77,3 +78,7 @@ app.controller("bookingsctl", function($scope, $http) {
 	};
 });
 </script>
+
+<?php include('booking_form.php'); ?>
+
+</div>
