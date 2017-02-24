@@ -150,7 +150,7 @@ app.controller("createbooking", function ($scope, $http, $window) {
 				}
 			}, function (response) {
 				alert("There was a problem sending your booking");
-				$scope.postresult = response.status + " " + response.statusText;
+				$scope.postresult = response;
 			});
 	};
 		
