@@ -20,6 +20,12 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="booking.BookerPhone" class="col-sm-2 control-label">Your Phone Number</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" ng-model="booking.BookerPhone" required>
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="booking.Title" class="col-sm-2 control-label">Event Name</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="text" ng-model="booking.Title" required>
