@@ -3,7 +3,9 @@
 
 <div class="container-fluid" ng-controller="createbooking">
 
-<form class="form-horizontal" ng-submit="save()">
+<button ng-show="showButton" ng-click="showBookingForm()">Book a room</button>
+
+<form class="form-horizontal" ng-submit="save()" ng-show="showForm">
 
 	<div class="form-group">
 		<label for="booking.BookerName" class="col-sm-2 control-label">Your Name</label>
@@ -15,6 +17,12 @@
 		<label for="booking.BookerEmail" class="col-sm-2 control-label">Your Email Address</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="email" ng-model="booking.BookerEmail" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="booking.Title" class="col-sm-2 control-label">Event Name</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" ng-model="booking.Title" required>
 		</div>
 	</div>
 	<div class="form-group">
@@ -73,12 +81,10 @@
 
 </form>
 
-{{booking}}
-
 </div>
 
 <script>
-app.controller("createbooking", function ($scope, $http) {
+app.controller("createbooking", function ($scope, $http, $window) {
 	$scope.newRoom = function (roomId) {
 		var room = null;
 		for (var i = 0; i < $scope.rooms.length; i++) {
@@ -112,16 +118,42 @@ app.controller("createbooking", function ($scope, $http) {
 			});
 		}
 	}
+
+	$scope.showBookingForm = function () {
+		$scope.showButton = false;
+		$scope.showForm = true;
+	};	
+	
 	$scope.facilities = [];
 	
 	$scope.StartTimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
 	$scope.Durations = [1, 2, 3, 4, 5, 6];
 	
+	$scope.showButton = true;
+	$scope.showForm = false;	
+		
 	$http.get("<?php echo $url?>/wp_room_data.php")
 		.then(function(response) {
 			$scope.rooms = response.data;
 			$scope.booking.Date = moment();
 		});
+		
+	$scope.save = function () {
+		$http.post("<?php echo $url?>/wp_add_booking.php", $scope.booking)
+			.then(function (response) {
+				$scope.postresult = response.data;
+				if ($scope.postresult.success) {
+					alert("Your booking has been recorded. You should receive an email about it soon.");
+					$window.location.reload();
+				} else {
+					alert("There was a problem recording your booking");
+				}
+			}, function (response) {
+				alert("There was a problem sending your booking");
+				$scope.postresult = response.status + " " + response.statusText;
+			});
+	};
+		
 });
 
 </script>

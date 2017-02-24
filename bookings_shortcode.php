@@ -35,7 +35,7 @@
 		<td>{{displayDate(booking)}}</td>
 		<td>{{displayTime(booking)}}</td>
 		<td>{{booking.Date}}</td>
-		<td>{{booking.RoomName}}</td>
+		<td>{{booking.RoomName}}<span ng-show="booking.Provisional==1"><br>(Provisional)</span></td>
 	</tr>
 	</tbody>
 </table>
