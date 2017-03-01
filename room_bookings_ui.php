@@ -37,8 +37,8 @@ if(!class_exists('Room_Bookings_UI'))
 				add_action('admin_init', [&$this, 'admin_init']);
 				add_action('admin_menu', [&$this, 'add_menu']);
 
-				add_shortcode('bookings', 'sc_bookings');
-				add_shortcode('bookings_cal', 'sc_bookings_cal');
+				add_shortcode('bookings', [&$this, 'sc_bookings']);
+				add_shortcode('bookings_cal', [&$this, 'sc_bookings_cal']);
         } 
     
         /**
@@ -79,21 +79,21 @@ if(!class_exists('Room_Bookings_UI'))
 		    
 		    include(sprintf("%s/templates/settings.php", dirname(__FILE__)));
        }
+       
+       function sc_bookings() {
+			 ob_start(); 
+			 include('bookings_shortcode.php');
+			 return ob_get_clean();
+		 }
+			
+		 function sc_bookings_cal() {
+			ob_start();
+			include('bookings_cal_shortcode.php');
+			return ob_get_clean();
+		 }
+
     }
 } 
-
-function sc_bookings() {
- 	ob_start(); 
- 	include('bookings_shortcode.php');
- 	return ob_get_clean();
-}
-
-function sc_bookings_cal() {
-	ob_start();
-	include('bookings_cal_shortcode.php');
-	return ob_get_clean();
-}
-
 
 if (class_exists('Room_Bookings_UI')) {
 	register_activation_hook(__FILE__, ['Room_Bookings_UI', 'activate']);
