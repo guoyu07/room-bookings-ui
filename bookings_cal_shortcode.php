@@ -45,3 +45,17 @@ $(document).ready(function() {
 <div class="container-fluid">
 <div id="calendar"></div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/en-gb.js'></script>
+
+<div ng-cloak class="container-fluid" ng-app="bookings">
+
+<script>
+var app = angular.module("bookings", ['moment-picker']);
+</script>
+
+<?php include('booking_form.php'); ?>
+
+</div>
