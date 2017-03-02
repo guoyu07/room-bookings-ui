@@ -17,7 +17,7 @@
 <div ng-cloak class="container-fluid" ng-app="bookings">
 <div ng-controller="bookingsctl">
 
-{{failure}}
+<b>{{failure}}</b>
 
 <table id="table" class="table table-hover" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs">
 	<thead>
@@ -42,9 +42,7 @@
 </div>
 
 <?php
-$url = get_option('api_url');
-$username = get_option('username');
-$password = get_option('password');
+$url = get_option('room_bookings_api_url');
 ?>
 
 <script>
@@ -63,7 +61,6 @@ app.controller("bookingsctl", function($scope, $http) {
 		.then(function(response) {
 			$scope.bookings = response.data;
 		}, function(response) {
-			alert(response);
 			$scope.failure = "The bookings plugin settings don't appear to be correct";
 		});
 	

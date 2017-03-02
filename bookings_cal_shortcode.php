@@ -8,9 +8,7 @@
 <link media='print' rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.print.css'>
 
 <?php
-$url = get_option('api_url');
-$username = get_option('username');
-$password = get_option('password');
+$url = get_option('room_bookings_api_url');
 ?>
 
 <script type='text/javascript'>

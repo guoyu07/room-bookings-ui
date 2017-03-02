@@ -62,9 +62,7 @@ if(!class_exists('Room_Bookings_UI'))
         }
         
        public function init_settings() {
-			register_setting('room_bookings_ui-group', 'api_url');
-    		register_setting('room_bookings_ui-group', 'username');
-    		register_setting('room_bookings_ui-group', 'password');
+			register_setting('room_bookings_ui-group', 'room_bookings_api_url');
        }
        
        public function add_menu() {
