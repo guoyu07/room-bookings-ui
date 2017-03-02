@@ -1,39 +1,45 @@
 <script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
 <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
 
+<?php
+$blogurl = get_bloginfo('url');
+?>
+
+<link rel="stylesheet" href="<?php echo $blogurl;?>/wp-content/plugins/room_bookings_ui/bookingform.css"> 
+
 <div class="container-fluid" ng-controller="createbooking">
 
 <button ng-show="showButton" ng-click="showBookingForm()">Book a room</button>
 
-<form class="form-horizontal" ng-submit="save()" ng-show="showForm">
+<form class="room-booking" ng-submit="save()" ng-show="showForm">
 
 	<div class="form-group">
-		<label for="booking.BookerName" class="col-sm-2 control-label">Your Name</label>
-		<div class="col-sm-10">
+		<label for="booking.BookerName" class="control-label">Your Name</label>
+		<div>
 			<input class="form-control" type="text" ng-model="booking.BookerName" required>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="booking.BookerEmail" class="col-sm-2 control-label">Your Email Address</label>
-		<div class="col-sm-10">
+		<label for="booking.BookerEmail" class="control-label">Your Email Address</label>
+		<div>
 			<input class="form-control" type="email" ng-model="booking.BookerEmail" required>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="booking.BookerPhone" class="col-sm-2 control-label">Your Phone Number</label>
-		<div class="col-sm-10">
+		<label for="booking.BookerPhone" class="control-label">Your Phone Number</label>
+		<div>
 			<input class="form-control" type="text" ng-model="booking.BookerPhone" required>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="booking.Title" class="col-sm-2 control-label">Event Name</label>
-		<div class="col-sm-10">
+		<label for="booking.Title" class="control-label">Event Name</label>
+		<div>
 			<input class="form-control" type="text" ng-model="booking.Title" required>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="booking.Id_Room" class="col-sm-2 control-label">Room</label>
-		<div class="col-sm-10">
+		<label for="booking.Id_Room" class="control-label">Room</label>
+		<div>
 			<select class="form-control" ng-model="booking.Id_Room" ng-change="newRoom(booking.Id_Room)" required>
 				<option></option>
 				<option ng_repeat="room in rooms" value="{{room.Id_Room}}">{{room.Name}}</option>
@@ -44,8 +50,8 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="Date" class="col-sm-2 control-label">Date</label>
-		<div class="col-sm-10">
+		<label for="Date" class="control-label">Date</label>
+		<div>
 			<input moment-picker="booking.Date"
 				class="form-control"
 				locale="en-gb"
@@ -58,16 +64,16 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="booking.Start" class="col-sm-2 control-label">Start Time</label>
-		<div class="col-sm-2">
+		<label for="booking.Start" class="control-label">Start Time</label>
+		<div>
 			<select class="form-control" ng-model="booking.Start" ng-options="x for x in StartTimes" required>
 				<option></option>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="booking.Duration" class="col-sm-2 control-label">Duration (Hours)</label>
-		<div class="col-sm-2">
+		<label for="booking.Duration" class="control-label">Duration (Hours)</label>
+		<div>
 			<select class="form-control" ng-model="booking.Duration" ng-options="x for x in Durations" required>
 				<option></option>
 			</select>
@@ -80,7 +86,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-10 col-sm-offset-2">
+		<div>
 			<input class="btn btn-primary" type="submit" value="Send Booking">
 		</div>
 	</div>
