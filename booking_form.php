@@ -112,7 +112,7 @@ app.controller("createbooking", function ($scope, $http, $window) {
 				var fac = new Object();
 				fac.Id_Facility = f.Id_Facility;
 				fac.Name = f.Name;
-				fac.checked = $.inArray(f.Id_Facility, $scope.booking.facilities) >= 0; 
+				fac.checked = jQuery.inArray(f.Id_Facility, $scope.booking.facilities) >= 0; 
 				facilities.push(fac);
 			}
 		}
@@ -121,11 +121,11 @@ app.controller("createbooking", function ($scope, $http, $window) {
 	};
 	
 	$scope.facChanged = function (facId, sel) {
-		var currsel = $.inArray(facId, $scope.booking.facilities) >= 0; 
+		var currsel = jQuery.inArray(facId, $scope.booking.facilities) >= 0; 
 		if (!currsel && sel) {
 			facilities = $scope.booking.facilities.push(facId);
 		} else if (currsel && !sel) {
-			$scope.booking.facilities = $.grep($scope.booking.facilities, function(value) {
+			$scope.booking.facilities = jQuery.grep($scope.booking.facilities, function(value) {
 				return value != facId;
 			});
 		}
