@@ -2,7 +2,6 @@
 	<h2>Room Bookings Setup</h2>
 	<form method="post" action="options.php"> 
         <?php @settings_fields('room_bookings_ui-group'); ?>
-        <?php @do_settings_fields('room_bookings_ui'); ?>
 
         <table class="form-table">  
             <tr valign="top">
