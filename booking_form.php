@@ -42,7 +42,7 @@ $blogurl = get_bloginfo('url');
 		<div>
 			<select class="form-control" ng-model="booking.Id_Room" ng-change="newRoom(booking.Id_Room)" required>
 				<option></option>
-				<option ng_repeat="room in rooms" value="{{room.Id_Room}}">{{room.Name}}</option>
+				<option ng-repeat="room in rooms" value="{{room.Id_Room}}">{{room.Name}}</option>
 			</select>
 			<span ng-repeat="fac in facilities">
 				<br/><input type="checkbox" ng-change="facChanged(fac.Id_Facility, fac.checked)" ng-model="fac.checked">{{fac.Name}}
