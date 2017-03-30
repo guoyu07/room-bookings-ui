@@ -47,7 +47,12 @@ $url = get_option('room_bookings_api_url');
 var app = angular.module("bookings", ['datatables', 'moment-picker']);
 app.controller("bookingsctl", function($scope, $http) {
 
-	$scope.dtOptions = {};
+	$scope.dtOptions = {
+		'language': {
+			'emptyTable': 'There are currently no future bookings'
+		}
+	};
+
 	$scope.dtColumnDefs = [
 		{ 'orderData': [2], 'targets': [0]},
 		{ 'sortable': false, 'targets': [1]},
