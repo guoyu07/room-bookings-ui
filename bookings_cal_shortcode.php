@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
 		eventMouseover: function (calEvent, jsEvent) {
 			var start = moment(calEvent.start);
 			var end = moment(calEvent.end);
-			var msg = start.format('DD MMM YYYY HA') + '-' + end.format('HA') + '<br/>' + calEvent.title;
+			var msg = start.format('DD MMM YYYY hA') + '-' + end.format('hA') + '<br/>' + calEvent.title;
 			if (calEvent.provisional) msg += "<br/>(Provisional)";
 			var tooltip = '<div class="tooltipevent" style="background:#ccc;position:absolute;z-index:10001;">' + msg + '</div>';
 			jQuery("body").append(tooltip);
